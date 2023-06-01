@@ -1,0 +1,25 @@
+.navbarWrapper {
+  width: 100vw;
+  height: 60px;
+  background-color: #cbcbcb;
+  padding: 10px 12px;
+}
+
+.navLinks {
+  display: flex;
+  width: 20%;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  font-size: 19px;
+}
+
+.navLinks > * {
+  cursor: pointer;
+  transition: all ease-in-out 200ms;
+}
+
+.navLinks > *:hover {
+  color: crimson;
+  transform: scale(1.1);
+}
