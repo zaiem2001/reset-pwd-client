@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./ResetPassword.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import notify from "../../Components/Toast";
 import { useMutation } from "react-query";
@@ -13,8 +13,6 @@ const ResetPassword = () => {
     reValidateMode: "onSubmit",
   });
 
-  const navigate = useNavigate();
-
   const mutation = useMutation((data) => {
     return axios.post(`${BASE_URL}/auth/gen-reset-pwd`, data);
   });
@@ -24,10 +22,8 @@ const ResetPassword = () => {
       { data },
       {
         onSuccess: (response) => {
-          const { data } = response;
           notify("success", "Password reset link sent successfully.");
-          navigate(`/reset-pwd?token=${data?.token}`);
-          //   navigate("/login");
+          // navigate(`/reset-pwd?token=${data?.token}`);
         },
         onError: (err) => {
           notify("error", err?.response?.data?.message);
