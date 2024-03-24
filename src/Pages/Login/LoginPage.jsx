@@ -4,10 +4,10 @@ import { useForm } from "react-hook-form";
 
 import "./LoginPage.css";
 import { useMutation } from "react-query";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import notify from "../../Components/Toast";
-
-const URL = "http://localhost:4000/api/auth/login";
+import { BASE_URL } from "../../Constants/constants";
+import { saveToLocalStorage } from "../../Helpers/helpers";
 
 const mutateLogin = (mutation, navigate, formState) => {
   return (data) => {
@@ -17,6 +17,10 @@ const mutateLogin = (mutation, navigate, formState) => {
       },
       {
         onSuccess: (data) => {
+          const {
+            data: { user },
+          } = data;
+          saveToLocalStorage("user", user);
           navigate("/");
         },
         onError: (err) => {
@@ -34,7 +38,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const mutation = useMutation((newUser) => {
-    return axios.post(URL, newUser);
+    return axios.post(`${BASE_URL}/auth/login`, newUser);
   });
   const onSubmit = mutateLogin(mutation, navigate, formState);
 
@@ -64,6 +68,19 @@ const LoginPage = () => {
                 })}
                 type="password"
               />
+            </div>
+
+            <div className="newUser">
+              <span>
+                New here? click <Link to="/register"> here</Link> to create an
+                account.
+              </span>
+            </div>
+            <div className="forgotPassword">
+              <span>
+                Forgot your password? click <Link to="/reset"> here</Link> to
+                reset your password.
+              </span>
             </div>
 
             <button type="submit">Submit</button>

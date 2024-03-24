@@ -19,7 +19,25 @@
   transition: all ease-in-out 200ms;
 }
 
+.logoutBtn {
+  color: black;
+}
+
 .navLinks > *:hover {
   color: crimson;
   transform: scale(1.1);
+}
+
+.navBarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+}
+
+.username {
+  font-size: 30px;
+  color: black;
+  font-family: monospace;
+  font-weight: 600;
 }

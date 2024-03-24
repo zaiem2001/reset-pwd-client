@@ -5,6 +5,8 @@ import "./App.css";
 import HomePage from "./Pages/HomePage/HomePage";
 import LoginPage from "./Pages/Login/LoginPage";
 import RegisterPage from "./Pages/Regiser/RegisterPage";
+import ResetPassword from "./Pages/resetPassword/ResetPassword";
+import ResetPwd from "./Pages/resetPassword/ResetPwd";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route element={<HomePage />} path="/" />
         <Route element={<LoginPage />} path="/login" />
         <Route element={<RegisterPage />} path="/register" />
+        <Route element={<ResetPassword />} path="/reset" />
+        <Route element={<ResetPwd />} path="/reset-pwd" />
       </Routes>
     </div>
   );
